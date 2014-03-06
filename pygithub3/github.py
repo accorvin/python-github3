@@ -22,6 +22,7 @@ class Github(object):
         from pygithub3.services.pull_requests import PullRequests
         from pygithub3.services.orgs import Org
         from pygithub3.services.issues import Issue
+        from pygithub3.services.statuses import Status
         self._users = User(**config)
         self._repos = Repo(**config)
         self._gists = Gist(**config)
@@ -30,6 +31,7 @@ class Github(object):
         self._orgs = Org(**config)
         self._issues = Issue(**config)
         self._events = Event(**config)
+        self._statuses = Status(**config)
 
     @property
     def remaining_requests(self):
@@ -92,3 +94,10 @@ class Github(object):
         :ref:`Events service <Events service>`
         """
         return self._events
+
+    @property
+    def statuses(self):
+        """
+        :ref:`Statuses service <Statuses service>`
+        """
+        return self._statuses

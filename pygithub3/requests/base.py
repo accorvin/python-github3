@@ -48,7 +48,10 @@ class Request(object):
     body_schema = {}
 
     def __init__(self, **kwargs):
-        self.body = kwargs.pop('body', {})
+        if kwargs.has_key('body'):
+            self.body = kwargs.pop('body', {})
+        else:
+            self.body = kwargs
         self.args = kwargs
         self.clean()
 
