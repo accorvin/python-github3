@@ -47,8 +47,11 @@ class Status(Service):
             If you aren't authenticated and call without user, it returns 403
         ::
         """
+        print 'Linking to: {0}'.format(target_url)
         request = self.make_request('statuses.create', repo=repo,
-                                    ref=ref, user=user, state=state)
+                                    ref=ref, user=user, state=state,
+                                    description=description,
+                                    target_url=target_url)
 
         return self._post(request, state=state, target_url=target_url,
                           description=description)
